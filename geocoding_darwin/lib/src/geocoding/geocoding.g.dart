@@ -643,7 +643,7 @@ class CLFloor extends NSObject {
 /// An object that displays interactive web content, such as for an in-app
 /// browser.
 ///
-/// See https://developer.apple.com/documentation/webkit/wkwebview.
+/// See https://developer.apple.com/documentation/corelocation/clgeocoder.
 class CLGeocoder extends NSObject {
   /// Creates a [CLGeocoder].localLocation.
   factory CLGeocoder({
@@ -1695,6 +1695,7 @@ class CLPlacemark extends NSObject {
     this.isoCountryCode,
     this.country,
     this.postalAddress,
+    this.areasOfInterest,
     super.observeValue,
   }) : super.pigeon_detached();
 
@@ -1734,6 +1735,11 @@ class CLPlacemark extends NSObject {
   /// The postal address associated with the location, formatted for use with the Contacts framework.
   final CNPostalAddress? postalAddress;
 
+  /// The areas of interest associated with the placemark.
+  ///
+  /// This property is only available on iOS/macOS (Darwin platforms).
+  final List<String?>? areasOfInterest;
+
   static void pigeon_setUpMessageHandlers({
     bool pigeon_clearHandlers = false,
     BinaryMessenger? pigeon_binaryMessenger,
@@ -1751,6 +1757,7 @@ class CLPlacemark extends NSObject {
       String? isoCountryCode,
       String? country,
       CNPostalAddress? postalAddress,
+      List<String?>? areasOfInterest,
     )? pigeon_newInstance,
   }) {
     final _PigeonInternalProxyApiBaseCodec pigeonChannelCodec =
@@ -1787,6 +1794,8 @@ class CLPlacemark extends NSObject {
           final String? arg_country = (args[11] as String?);
           final CNPostalAddress? arg_postalAddress =
               (args[12] as CNPostalAddress?);
+          final List<String?>? arg_areasOfInterest =
+              (args[13] as List<Object?>?)?.cast<String?>();
           try {
             (pigeon_instanceManager ?? PigeonInstanceManager.instance)
                 .addHostCreatedInstance(
@@ -1802,7 +1811,8 @@ class CLPlacemark extends NSObject {
                       arg_postalCode,
                       arg_isoCountryCode,
                       arg_country,
-                      arg_postalAddress) ??
+                      arg_postalAddress,
+                      arg_areasOfInterest) ??
                   CLPlacemark.pigeon_detached(
                     pigeon_binaryMessenger: pigeon_binaryMessenger,
                     pigeon_instanceManager: pigeon_instanceManager,
@@ -1818,6 +1828,7 @@ class CLPlacemark extends NSObject {
                     isoCountryCode: arg_isoCountryCode,
                     country: arg_country,
                     postalAddress: arg_postalAddress,
+                    areasOfInterest: arg_areasOfInterest,
                   ),
               arg_pigeon_instanceIdentifier!,
             );
@@ -1850,6 +1861,7 @@ class CLPlacemark extends NSObject {
       isoCountryCode: isoCountryCode,
       country: country,
       postalAddress: postalAddress,
+      areasOfInterest: areasOfInterest,
       observeValue: observeValue,
     );
   }

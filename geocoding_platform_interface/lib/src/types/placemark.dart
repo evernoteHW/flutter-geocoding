@@ -17,6 +17,7 @@ class Placemark {
     this.subLocality,
     this.thoroughfare,
     this.subThoroughfare,
+    this.areasOfInterest,
   });
 
   /// The name associated with the placemark.
@@ -51,6 +52,11 @@ class Placemark {
 
   /// Additional street address information for the placemark.
   final String? subThoroughfare;
+
+  /// The areas of interest associated with the placemark.
+  ///
+  /// Only populated on iOS/macOS (Darwin platforms). Will be null on Android.
+  final List<String?>? areasOfInterest;
 
   @override
   bool operator ==(Object other) =>

@@ -1400,6 +1400,10 @@ protocol PigeonApiDelegateCLPlacemark {
   func country(pigeonApi: PigeonApiCLPlacemark, pigeonInstance: CLPlacemark) throws -> String?
   /// The postal address associated with the location, formatted for use with the Contacts framework.
   func postalAddress(pigeonApi: PigeonApiCLPlacemark, pigeonInstance: CLPlacemark) throws -> CNPostalAddress?
+  /// The areas of interest associated with the placemark.
+  ///
+  /// This property is only available on iOS/macOS (Darwin platforms).
+  func areasOfInterest(pigeonApi: PigeonApiCLPlacemark, pigeonInstance: CLPlacemark) throws -> [String?]?
 }
 
 protocol PigeonApiProtocolCLPlacemark {
@@ -1441,11 +1445,12 @@ final class PigeonApiCLPlacemark: PigeonApiProtocolCLPlacemark  {
       let isoCountryCodeArg = try! pigeonDelegate.isoCountryCode(pigeonApi: self, pigeonInstance: pigeonInstance)
       let countryArg = try! pigeonDelegate.country(pigeonApi: self, pigeonInstance: pigeonInstance)
       let postalAddressArg = try! pigeonDelegate.postalAddress(pigeonApi: self, pigeonInstance: pigeonInstance)
+      let areasOfInterestArg = try! pigeonDelegate.areasOfInterest(pigeonApi: self, pigeonInstance: pigeonInstance)
       let binaryMessenger = pigeonRegistrar.binaryMessenger
       let codec = pigeonRegistrar.codec
       let channelName: String = "dev.flutter.pigeon.geocoding_darwin.CLPlacemark.pigeon_newInstance"
       let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
-      channel.sendMessage([pigeonIdentifierArg, locationArg, nameArg, thoroughfareArg, subThoroughfareArg, localityArg, subLocalityArg, administrativeAreaArg, subAdministrativeAreaArg, postalCodeArg, isoCountryCodeArg, countryArg, postalAddressArg] as [Any?]) { response in
+      channel.sendMessage([pigeonIdentifierArg, locationArg, nameArg, thoroughfareArg, subThoroughfareArg, localityArg, subLocalityArg, administrativeAreaArg, subAdministrativeAreaArg, postalCodeArg, isoCountryCodeArg, countryArg, postalAddressArg, areasOfInterestArg] as [Any?]) { response in
         guard let listResponse = response as? [Any?] else {
           completion(.failure(createConnectionError(withChannelName: channelName)))
           return

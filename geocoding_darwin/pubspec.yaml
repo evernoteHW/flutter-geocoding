@@ -12,7 +12,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  geocoding_platform_interface: ^5.0.0
+  geocoding_platform_interface:
+    path: ../geocoding_platform_interface
   pigeon: ^26.1.2
   plugin_platform_interface: ^2.0.2
 

@@ -30,6 +30,7 @@
         @"subAdministrativeArea": self.subAdministrativeArea == nil ? @"" : self.subAdministrativeArea,
         @"locality": self.locality == nil ? @"" : self.locality,
         @"subLocality": self.subLocality == nil ? @"" : self.subLocality,
+        @"areasOfInterest": self.areasOfInterest == nil ? @[] : self.areasOfInterest,
     }];
     
     return dict;

@@ -26,9 +26,7 @@ abstract class GeocodingPlatform extends PlatformInterface {
   /// register themselves.
   static set instance(GeocodingPlatform? instance) {
     if (instance == null) {
-      throw AssertionError(
-        'Instance of geocoding platform has to be non-null.',
-      );
+      throw AssertionError('Instance of geocoding platform has to be non-null.');
     }
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
@@ -39,9 +37,7 @@ abstract class GeocodingPlatform extends PlatformInterface {
   /// The `localeIdentifier` should be formatted using the syntax:
   /// [languageCode]_[countryCode] (eg. en_US or nl_NL).
   Future<void> setLocaleIdentifier(String localeIdentifier) {
-    throw UnimplementedError(
-      'setLocaleIdentifier() has not been implementated.',
-    );
+    throw UnimplementedError('setLocaleIdentifier() has not been implementated.');
   }
 
   /// Returns a list of [Location] instances found for the supplied address.
@@ -51,9 +47,7 @@ abstract class GeocodingPlatform extends PlatformInterface {
   /// resolved into a single [Location], multiple [Location] instances may be
   /// returned.
   Future<List<Location>> locationFromAddress(String address) {
-    throw UnimplementedError(
-      'locationFromAddress() has not been implementated.',
-    );
+    throw UnimplementedError('locationFromAddress() has not been implementated.');
   }
 
   /// Returns true if there is a geocoder implementation present that may return results.
@@ -73,13 +67,8 @@ abstract class GeocodingPlatform extends PlatformInterface {
   /// However in some situations where the supplied coordinates could not be
   /// resolved into a single [Placemark], multiple [Placemark] instances may be
   /// returned.
-  Future<List<Placemark>> placemarkFromCoordinates(
-    double latitude,
-    double longitude,
-  ) {
-    throw UnimplementedError(
-      'placemarkFromCoordinates() has not been implementated.',
-    );
+  Future<List<Placemark>> placemarkFromCoordinates(double latitude, double longitude) {
+    throw UnimplementedError('placemarkFromCoordinates() has not been implementated.');
   }
 
   /// Returns a list of [Placemark] instances found for the supplied address.
@@ -89,8 +78,6 @@ abstract class GeocodingPlatform extends PlatformInterface {
   /// resolved into a single [Placemark], multiple [Placemark] instances may be
   /// returned.
   Future<List<Placemark>> placemarkFromAddress(String address) {
-    throw UnimplementedError(
-      'placemarkFromAddress() has not been implementated.',
-    );
+    throw UnimplementedError('placemarkFromAddress() has not been implementated.');
   }
 }

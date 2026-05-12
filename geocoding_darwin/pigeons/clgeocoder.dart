@@ -185,6 +185,11 @@ abstract class CLPlacemark extends NSObject {
 
   /// The postal address associated with the location, formatted for use with the Contacts framework.
   late CNPostalAddress? postalAddress;
+
+  /// The areas of interest associated with the placemark.
+  ///
+  /// This property is only available on iOS/macOS (Darwin platforms).
+  late List<String?>? areasOfInterest;
 }
 
 /// An immutable representation of the postal address for a contact.

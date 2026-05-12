@@ -130,6 +130,7 @@ extension _CLPlacemarkExtensions on CLPlacemark {
     subLocality: subLocality,
     thoroughfare: thoroughfare,
     subThoroughfare: subThoroughfare,
+    areasOfInterest: areasOfInterest,
   );
 
   Future<Location?> toDartLocation() async {

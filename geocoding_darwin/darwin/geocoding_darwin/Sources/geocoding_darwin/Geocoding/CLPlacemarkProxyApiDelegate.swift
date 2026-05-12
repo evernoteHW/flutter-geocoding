@@ -54,5 +54,9 @@ class CLPlacemarkProxyApiDelegate: PigeonApiDelegateCLPlacemark {
     func postalAddress(pigeonApi: PigeonApiCLPlacemark, pigeonInstance: CLPlacemark) throws -> CNPostalAddress? {
         return pigeonInstance.postalAddress
     }
-    
+
+    func areasOfInterest(pigeonApi: PigeonApiCLPlacemark, pigeonInstance: CLPlacemark) throws -> [String?]? {
+        return pigeonInstance.areasOfInterest
+    }
+
 }

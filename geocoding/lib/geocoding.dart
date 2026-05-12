@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:geocoding_platform_interface/geocoding_platform_interface.dart';
+import 'package:geocoding_platform_interface/legacy/geocoding_platform_interface.dart';
 
-export 'package:geocoding_platform_interface/geocoding_platform_interface.dart';
+export 'package:geocoding_platform_interface/legacy/geocoding_platform_interface.dart';
 
 /// Returns a list of [Location] instances found for the supplied address.
 ///

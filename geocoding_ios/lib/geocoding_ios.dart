@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:geocoding_platform_interface/geocoding_platform_interface.dart';
+import 'package:geocoding_platform_interface/legacy/geocoding_platform_interface.dart';
 
 const MethodChannel _channel = MethodChannel('flutter.baseflow.com/geocoding');
 
@@ -57,8 +57,7 @@ class GeocodingIOS extends GeocodingPlatform {
       parameters['localeIdentifier'] = _localeIdentifier!;
     }
 
-    final placemarks =
-        await _channel.invokeMethod('placemarkFromCoordinates', parameters);
+    final placemarks = await _channel.invokeMethod('placemarkFromCoordinates', parameters);
     return Placemark.fromMaps(placemarks);
   }
 
